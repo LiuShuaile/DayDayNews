@@ -15,6 +15,25 @@
     return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil];
 }
 
+- (NSString *)md5FileName {
+    
+    
+    
+    return @"";
+}
+
++ (NSString *)md5:(NSString *)str{
+    const char *cStr = [str UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), digest);
+    NSMutableString *result = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [result appendFormat:@"%02x", digest[i]];
+    }
+    return [result copy];
+}
+
+
 - (NSString *)stringToMD5
 {
     

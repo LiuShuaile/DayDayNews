@@ -120,6 +120,10 @@
 		19F540031BB52D9200460EA3 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F540021BB52D9200460EA3 /* VideoCell.m */; };
 		19F540061BB52DAA00460EA3 /* VideoDataFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F540051BB52DAA00460EA3 /* VideoDataFrame.m */; };
 		19F8D84E1BCF4BFF001F4669 /* LocaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F8D84D1BCF4BFF001F4669 /* LocaViewController.m */; };
+		5ADD1E471ED57D35007733D6 /* AVDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD1E421ED57D35007733D6 /* AVDownloadManager.m */; };
+		5ADD1E481ED57D35007733D6 /* AVSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD1E441ED57D35007733D6 /* AVSessionModel.m */; };
+		5ADD1E491ED57D35007733D6 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD1E461ED57D35007733D6 /* NSString+Hash.m */; };
+		5ADD1E591ED5C0A1007733D6 /* DownloadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD1E581ED5C0A1007733D6 /* DownloadTableViewController.m */; };
 		5AE0AE7F1ECD937500A523E0 /* AVloaderURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AE7B1ECD937500A523E0 /* AVloaderURLConnection.m */; };
 		5AE0AE801ECD937500A523E0 /* AVVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AE7D1ECD937500A523E0 /* AVVideoRequestTask.m */; };
 		5AE0AE8E1ECE88E900A523E0 /* AVPlayerCaching.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AE8D1ECE88E900A523E0 /* AVPlayerCaching.m */; };
@@ -403,6 +407,14 @@
 		19F8D84C1BCF4BFF001F4669 /* LocaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocaViewController.h; sourceTree = "<group>"; };
 		19F8D84D1BCF4BFF001F4669 /* LocaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaViewController.m; sourceTree = "<group>"; };
 		3280843616FF8E5DD92EE04F /* libPods-新闻.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-新闻.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ADD1E411ED57D35007733D6 /* AVDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVDownloadManager.h; sourceTree = "<group>"; };
+		5ADD1E421ED57D35007733D6 /* AVDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVDownloadManager.m; sourceTree = "<group>"; };
+		5ADD1E431ED57D35007733D6 /* AVSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVSessionModel.h; sourceTree = "<group>"; };
+		5ADD1E441ED57D35007733D6 /* AVSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVSessionModel.m; sourceTree = "<group>"; };
+		5ADD1E451ED57D35007733D6 /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		5ADD1E461ED57D35007733D6 /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
+		5ADD1E571ED5C0A1007733D6 /* DownloadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTableViewController.h; sourceTree = "<group>"; };
+		5ADD1E581ED5C0A1007733D6 /* DownloadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTableViewController.m; sourceTree = "<group>"; };
 		5AE0AE7A1ECD937500A523E0 /* AVloaderURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVloaderURLConnection.h; sourceTree = "<group>"; };
 		5AE0AE7B1ECD937500A523E0 /* AVloaderURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVloaderURLConnection.m; sourceTree = "<group>"; };
 		5AE0AE7C1ECD937500A523E0 /* AVVideoRequestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVVideoRequestTask.h; sourceTree = "<group>"; };
@@ -920,6 +932,7 @@
 		19C33DEC1BB109A20059238A /* 视频 */ = {
 			isa = PBXGroup;
 			children = (
+				5ADD1E401ED57D35007733D6 /* downloadLibs */,
 				5AE0AECB1ED2EA6100A523E0 /* hcdLibs */,
 				5AE0AE6B1ECD3F3500A523E0 /* libs */,
 				198E408E1D71B0EE00ABDD5E /* GYHPhotoLoadingView */,
@@ -1147,6 +1160,21 @@
 				3280843616FF8E5DD92EE04F /* libPods-新闻.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5ADD1E401ED57D35007733D6 /* downloadLibs */ = {
+			isa = PBXGroup;
+			children = (
+				5ADD1E571ED5C0A1007733D6 /* DownloadTableViewController.h */,
+				5ADD1E581ED5C0A1007733D6 /* DownloadTableViewController.m */,
+				5ADD1E411ED57D35007733D6 /* AVDownloadManager.h */,
+				5ADD1E421ED57D35007733D6 /* AVDownloadManager.m */,
+				5ADD1E431ED57D35007733D6 /* AVSessionModel.h */,
+				5ADD1E441ED57D35007733D6 /* AVSessionModel.m */,
+				5ADD1E451ED57D35007733D6 /* NSString+Hash.h */,
+				5ADD1E461ED57D35007733D6 /* NSString+Hash.m */,
+			);
+			path = downloadLibs;
 			sourceTree = "<group>";
 		};
 		5AE0AE6B1ECD3F3500A523E0 /* libs */ = {
@@ -1461,12 +1489,14 @@
 				190450D21BCCAC0A00C47A50 /* testViewController.m in Sources */,
 				192FC1641CDDA2FC008E41CA /* ChatViewController.m in Sources */,
 				19ED1DAD1C872A1700AD6E0A /* DataModel.m in Sources */,
+				5ADD1E481ED57D35007733D6 /* AVSessionModel.m in Sources */,
 				19C33EB61BB10B6E0059238A /* Photo.m in Sources */,
 				19C33E2D1BB109A20059238A /* PhotoViewController.m in Sources */,
 				198E40961D71B0EE00ABDD5E /* GYHCircleProgressView.m in Sources */,
 				99C9A3071D81703B00063D23 /* BaseEngine.m in Sources */,
 				19BE4F0E1CE4E4B0005E515D /* PhotoCollectModel.m in Sources */,
 				19918FDB1CDDEF7500A89620 /* LVRecordView.m in Sources */,
+				5ADD1E491ED57D35007733D6 /* NSString+Hash.m in Sources */,
 				19ED1DA71C8729D700AD6E0A /* BigImageCell.m in Sources */,
 				9922B9641D802AE400E3E236 /* NSDate+gyh.m in Sources */,
 				5AE0AE911ECEB37100A523E0 /* AVCacheManager.m in Sources */,
@@ -1475,6 +1505,7 @@
 				19747D391C87F65600C4CBBD /* DetailWebViewController.m in Sources */,
 				9922B9801D80328100E3E236 /* BaseSettingViewController.m in Sources */,
 				19ED1DA41C8729C900AD6E0A /* ImagesCell.m in Sources */,
+				5ADD1E471ED57D35007733D6 /* AVDownloadManager.m in Sources */,
 				19918FBD1CDDE12900A89620 /* AddView.m in Sources */,
 				19C33E2C1BB109A20059238A /* VideoViewController.m in Sources */,
 				198AF7BA1C8421AB00D941F4 /* SettingHeaderView.m in Sources */,
@@ -1510,6 +1541,7 @@
 				198BD2121BBBB34600B21A07 /* PhotoShowViewController.m in Sources */,
 				9922B9671D802AE400E3E236 /* UIView+Frame.m in Sources */,
 				190450D31BCCAC0A00C47A50 /* TopViewController.m in Sources */,
+				5ADD1E591ED5C0A1007733D6 /* DownloadTableViewController.m in Sources */,
 				19234A4A1CCE63CA00123348 /* CollectModel.m in Sources */,
 				190450E71BCCAE6400C47A50 /* WeatherData.m in Sources */,
 				19C33E3E1BB109A20059238A /* NavigationController.m in Sources */,

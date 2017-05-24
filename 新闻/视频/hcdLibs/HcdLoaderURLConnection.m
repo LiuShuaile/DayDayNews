@@ -106,13 +106,10 @@
     [dataRequest respondWithData:[filedata subdataWithRange:NSMakeRange((NSUInteger)startOffset- self.task.offset, (NSUInteger)numberOfBytesToRespondWith)]];
     
     
-    
     long long endOffset = startOffset + dataRequest.requestedLength;
     BOOL didRespondFully = (self.task.offset + self.task.downLoadingOffset) >= endOffset;
     
     return didRespondFully;
-    
-    
 }
 
 

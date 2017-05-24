@@ -16,7 +16,7 @@ static const NSInteger kDefaultCacheMaxCacheAge = 60*60*24;//60*60*24*7; // 1 we
 static const NSInteger kDefaultCacheMaxSize = 1024*1024*1024;//1000*1000*1000; // 1 GB
 
 @interface AVCacheManager ()
-@property (nonatomic, copy) NSString *diskCachePath;
+
 @property (nonatomic, strong) NSFileManager *FM;
 @property (nonatomic, copy) NSString *curType;
 @property (nonatomic, strong, nonnull) dispatch_queue_t ioQueue;

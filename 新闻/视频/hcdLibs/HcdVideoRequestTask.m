@@ -153,31 +153,6 @@
     if (self.taskArr.count < 2) {
         _isFinishLoad = YES;
         
-//        NSURLComponents *components = [[NSURLComponents alloc] initWithURL:_url resolvingAgainstBaseURL:NO];
-//        components.scheme = @"http";
-//        NSURL *playUrl = [components URL];
-        //使用md5将请求url地址加密后作为缓存本地文件的文件名
-//        NSString *md5File = [NSString stringWithFormat:@"%@.mp4", [self.filePath stringToMD5]];
-        
-//        NSLog(@"saveFileName:%@", md5File);
-//        
-//        //这里自己写需要保存数据的路径
-//        NSString *document = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
-//        NSString *movePath =  [document stringByAppendingPathComponent:md5File];
-//        
-//        if (![[NSFileManager defaultManager] fileExistsAtPath:movePath]) {
-//            
-//            [self movePath:_tempPath toPath:movePath];
-//            
-//        } else {
-//            BOOL removeSuccess = [[NSFileManager defaultManager] removeItemAtPath:movePath error:nil];
-//            if (removeSuccess) {
-//                [self movePath:_tempPath toPath:movePath];
-//            } else {
-//                NSLog(@"cache failed");
-//            }
-//        }
-        
         //这里自己写需要保存数据的路径
         NSFileManager *FM = [NSFileManager defaultManager];
         [FM removeItemAtPath:[[AVCacheManager sharedInstance] tempPath] error:nil];

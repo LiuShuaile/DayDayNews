@@ -113,6 +113,8 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, assign) HCDPlayerControlType controlType;       //当前手势是在控制进度、声音还是亮度
 @property (nonatomic, strong) HcdTimeSheetView *timeSheetView;        //左右滑动时间View
+@property (nonatomic, strong) UIButton *btn_download;
+
 @end
 
 @implementation HcdCacheVideoPlayer
@@ -186,6 +188,9 @@ typedef enum : NSUInteger {
         
         return playerItem;
     }else{
+        //监测到本地播放，尝试下载
+        [self clickDownload];
+        
         AVURLAsset *movieAsset  = [[AVURLAsset alloc]initWithURL:[NSURL fileURLWithPath:self.mp4_url] options:nil];
         AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:movieAsset];
         return playerItem;
@@ -205,7 +210,7 @@ typedef enum : NSUInteger {
 {
     [superView addSubview:showView];
     self.mp4_url = [[AVCacheManager sharedInstance] isExistLocalFile:urlString];
-    
+    NSLog(@"playURL:>>>>>>>>>>>>>>>\n%@",self.mp4_url);
 //    [self.player pause];
 //    [self releasePlayer];
     
@@ -222,7 +227,9 @@ typedef enum : NSUInteger {
     [(AVPlayerLayer *)self.playerLayerView.layer setPlayer:self.player];
     
 //    return;
+    //监听播放状态
     [self.currentPlayerItem addObserver:self forKeyPath:HCDVideoPlayerItemStatusKeyPath options:NSKeyValueObservingOptionNew context:nil];
+    //监听播放进度
     [self.currentPlayerItem addObserver:self forKeyPath:HCDVideoPlayerItemLoadedTimeRangesKeyPath options:NSKeyValueObservingOptionNew context:nil];
     
     [self.currentPlayerItem addObserver:self forKeyPath:HCDVideoPlayerItemPlaybackBufferEmptyKeyPath options:NSKeyValueObservingOptionNew context:nil];
@@ -235,7 +242,6 @@ typedef enum : NSUInteger {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemPlaybackStalled:) name:AVPlayerItemPlaybackStalledNotification object:self.currentPlayerItem];
     
     [self setVideoToolView];
-    
     //    [self updateOrientation];
 }
 
@@ -374,17 +380,19 @@ typedef enum : NSUInteger {
         if ([playerItem status] == AVPlayerStatusReadyToPlay) {
             
             _hiddenTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(toolViewHidden) userInfo:nil repeats:NO];
-            [self monitoringPlayback:playerItem];// 给播放器添加计时器
+            // 给播放器添加计时器
+            [self monitoringPlayback:playerItem];
             
         } else if ([playerItem status] == AVPlayerStatusFailed || [playerItem status] == AVPlayerStatusUnknown) {
             [self stop];
         }
         
-    } else if ([HCDVideoPlayerItemLoadedTimeRangesKeyPath isEqualToString:keyPath]) {  //监听播放器的下载进度
-        
+    } else if ([HCDVideoPlayerItemLoadedTimeRangesKeyPath isEqualToString:keyPath]) {
+        //监听播放器的下载进度
         [self calculateDownloadProgress:playerItem];
         
-    } else if ([HCDVideoPlayerItemPlaybackBufferEmptyKeyPath isEqualToString:keyPath]) { //监听播放器在缓冲数据的状态
+    } else if ([HCDVideoPlayerItemPlaybackBufferEmptyKeyPath isEqualToString:keyPath]) {
+        //监听播放器在缓冲数据的状态
         //        [[XCHudHelper sharedInstance] showHudOnView:_showView caption:nil image:nil acitivity:YES autoHideTime:0];
         [self.actIndicator startAnimating];
         self.actIndicator.hidden = NO;
@@ -410,8 +418,8 @@ typedef enum : NSUInteger {
 
 - (void)monitoringPlayback:(AVPlayerItem *)playerItem
 {
-    
-    self.duration = playerItem.duration.value / playerItem.duration.timescale; //视频总时间
+    //视频总时间
+    self.duration = playerItem.duration.value / playerItem.duration.timescale;
     [self.player play];
     [self updateTotolTime:self.duration];
     [self setPlaySliderValue:self.duration];
@@ -663,6 +671,18 @@ typedef enum : NSUInteger {
     return _timeSheetView;
 }
 
+- (UIButton *)btn_download {
+    if (!_btn_download) {
+        _btn_download = [UIButton buttonWithType:1];
+        [_btn_download setTitle:@"下载" forState:0];
+        [_btn_download setTitleColor:[UIColor whiteColor] forState:0];
+        _btn_download.titleLabel.font = [UIFont systemFontOfSize:13];
+//        _btn_download.frame = CGRectMake(SCREEN_WIDTH - 44, 44, 33, 33);
+//        _btn_download.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    }
+    return _btn_download;
+}
+
 #pragma mark - 设置进度条、暂停、全屏等组件
 
 - (void)setVideoToolView {
@@ -687,6 +707,15 @@ typedef enum : NSUInteger {
         make.top.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.height.mas_equalTo(20);
+    }];
+    
+    [self.btn_download removeFromSuperview];
+    [_showView addSubview:self.btn_download];
+    [self.btn_download mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.width.mas_equalTo(33);
+        make.height.mas_equalTo(33);
     }];
     
 //    self.toolView.frame = CGRectMake(0, CGRectGetHeight(_showView.frame) - 44, CGRectGetWidth(_showView.frame), 44);
@@ -816,27 +845,31 @@ typedef enum : NSUInteger {
     tap.delegate = self;
     [self.touchView addGestureRecognizer:tap];
     //用于控制播放进度的快放快退
-//    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-//    [panRecognizer setMinimumNumberOfTouches:1];
-//    [panRecognizer setMaximumNumberOfTouches:1];
-//    [panRecognizer setDelegate:self];
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [panRecognizer setMinimumNumberOfTouches:1];
+    [panRecognizer setMaximumNumberOfTouches:1];
+    [panRecognizer setDelegate:self];
 //    [self.touchView addGestureRecognizer:panRecognizer];
+    [self.toolView addGestureRecognizer:panRecognizer];
     //控制播放进度条的点击事件，跳转到点击进度点
     UITapGestureRecognizer *sliderTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(sliderTapAction:)];
     sliderTap.numberOfTapsRequired = 1;
     sliderTap.numberOfTouchesRequired = 1;
     sliderTap.delegate = self;
     [self.playSlider addGestureRecognizer:sliderTap];
+    //此点击事件用于拦截父级视图的点击事件
+    [self.toolView addGestureRecognizer:[UITapGestureRecognizer new]];
     
-    //此点击事件用于拦截cell的点击事件
-    UITapGestureRecognizer * tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap1Action:)];
-    tap.numberOfTapsRequired = 1;
-    tap.numberOfTouchesRequired = 1;
-    tap.delegate = self;
-    [self.toolView addGestureRecognizer:tap1];
+    [self.btn_download addTarget:self action:@selector(clickDownload) forControlEvents:UIControlEventTouchUpInside];
+    [_showView bringSubviewToFront:self.btn_download];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
+
+- (void)clickDownload {
+    NSLog(@"\n%@",_mp4_url);
+    [[AVDownloadManager sharedInstance] download:self.mp4_url progress:nil state:nil];
+}
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
     if (_controlJudge) {
@@ -845,7 +878,7 @@ typedef enum : NSUInteger {
         return YES;
     }
 }
-- (void)tap1Action:(UITapGestureRecognizer *)tap{}
+
 - (void)tapAction:(UITapGestureRecognizer *)tap{
     //点击一次
     if (tap.numberOfTapsRequired == 1) {
@@ -874,9 +907,8 @@ typedef enum : NSUInteger {
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
-    
     CGPoint touchPoint = [recognizer locationInView:self.touchView];
-    NSLog(@"(%f,%f)", touchPoint.x, touchPoint.y);
+//    NSLog(@"(%f,%f)", touchPoint.x, touchPoint.y);
     
     if ([(UIPanGestureRecognizer *)recognizer state] == UIGestureRecognizerStateBegan) {
         //触摸开始, 初始化一些值

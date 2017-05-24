@@ -12,10 +12,13 @@
 
 + (instancetype)sharedInstance;
 
++ (NSString *)getMd5Name:(NSString *)fileName;
+
 - (NSString *)getPathByFileName:(NSString *)fileName;
 
 @property (nonatomic, copy) NSString *tempPath;
 
+@property (nonatomic, copy) NSString *diskCachePath;
 
 - (NSString *)isExistLocalFile:(NSString *)file;
 
@@ -34,6 +37,9 @@ Xcode8出现AQDefaultDevice (173): skipping input stream 0 0 0x0
 
  
  http://flv2.bn.netease.com/videolib3/1705/20/KcLSx8643/SD/KcLSx8643-mobile.mp4 (12:13)
-
+ 
+ http://flv2.bn.netease.com/tvmrepo/2017/4/F/M/ECHGRGSFM/SD/ECHGRGSFM-mobile.mp4 (13:05)
+ 
+ http://flv2.bn.netease.com/videolib3/1705/21/UuVLF4419/SD/UuVLF4419-mobile.mp4 (12:29)
  
  */

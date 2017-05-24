@@ -21,6 +21,7 @@
 #import "ChatViewController.h"      //帮助与反馈
 #import "ShareManager.h"
 #import "EMSDK.h"
+#import "DownloadTableViewController.h"
 
 @interface MeViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,EMChatManagerDelegate>
 
@@ -131,10 +132,11 @@
 {
     SettingItem *shoucang = [SettingArrowItem itemWithItem:@"MorePush" title:@"收藏" VcClass:[CollectViewController class]];
     SettingItem *handShake = [SettingSwitchItem itemWithItem:@"handShake" title:@"夜间模式"];
+    SettingItem *download = [SettingArrowItem itemWithItem:@"MorePush" title:@"下载列表" VcClass:[DownloadTableViewController class]];
 
     SettingGroup *group0 = [[SettingGroup alloc]init];
     
-    group0.items = @[shoucang,handShake];
+    group0.items = @[shoucang,handShake,download];
     [self.arrays addObject:group0];
 }
 
@@ -215,7 +217,10 @@
 //            chatVC.fromname = @"gaoyuhang";
 //            [self.navigationController pushViewController:chatVC animated:YES];
 
-        }else{
+        } else if (arrowItem.VcClass == [DownloadTableViewController class]) {
+            DownloadTableViewController *vc = [DownloadTableViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+        } else{
             UIViewController *vc = [[arrowItem.VcClass alloc]init];
             vc.view.backgroundColor = [UIColor whiteColor];
             vc.title = arrowItem.title;

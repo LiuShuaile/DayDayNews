@@ -19,4 +19,9 @@
 
 - (NSString *)stringToMD5;
 + (NSString *)calculateTimeWithTimeFormatter:(long long)timeSecond;
+
+//视频缓存相关
+@property (readonly) NSString *md5FileName;
+
++ (NSString *)md5:(NSString *)str;
 @end
