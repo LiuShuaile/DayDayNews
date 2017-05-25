@@ -111,12 +111,12 @@
 
 - (void)initNetWork
 {
-    IMP_BLOCK_SELF(TopViewController);
-    
+//    IMP_BLOCK_SELF(TopViewController);
+    @weakify_self;
     [[BaseEngine shareEngine] runRequestWithPara:nil path:_url success:^(id responseObject) {
-        
-        block_self.count = [responseObject[@"imgsum"]intValue];
-        block_self.setname = responseObject[@"setname"];
+        @strongify_self;
+        self.count = [responseObject[@"imgsum"]intValue];
+        self.setname = responseObject[@"setname"];
         
         NSArray *dataarray = [TopData mj_objectArrayWithKeyValuesArray:responseObject[@"photos"]];
         // 创建frame模型对象
@@ -125,10 +125,10 @@
         for (TopData *data in dataarray) {
             [statusFrameArray addObject:data];
         }
-        [block_self.totalArray addObjectsFromArray:statusFrameArray];
+        [self.totalArray addObjectsFromArray:statusFrameArray];
         
-        [block_self setLabel];
-        [block_self setImageView];
+        [self setLabel];
+        [self setImageView];
         
     } failure:^(id error) {
         

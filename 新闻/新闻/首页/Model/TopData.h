@@ -40,3 +40,14 @@
 @property (nonatomic , copy) NSString *imgtitle;
 
 @end
+/*
+ {
+ imgsrc = "http://cms-bucket.nosdn.127.net/1b03d292845d4c92856355dcaec1a8df20170525104206.jpeg";
+ skipID = "00AO0001|2257193";
+ skipType = photoset;
+ subtitle = "";
+ tag = photoset;
+ title = "\U7279\U6717\U666e\U643a\U59bb\U5973\U4f1a\U89c1\U7f57\U9a6c\U5929\U4e3b\U6559\U6559\U7687";
+ url = "00AO0001|2257193";
+ }
+ */

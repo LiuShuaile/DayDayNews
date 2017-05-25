@@ -20,21 +20,14 @@
     SCNavTabBar     *_navTabBar;
     UIScrollView    *_mainView;
 }
-
-
-
 @end
 
 @implementation SCNavTabBarController
-
-
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
    
-    
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
     //监听夜间模式的改变
@@ -48,7 +41,6 @@
 
 -(void)initControl
 {
-    
     NSArray *namearray = [NSArray array];
     namearray = @[@"国内",@"国际",@"娱乐",@"体育",@"科技",@"奇闻趣事",@"生活健康"];
     NSArray *contentarray = [NSArray array];

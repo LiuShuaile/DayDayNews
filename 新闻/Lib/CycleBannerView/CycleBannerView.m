@@ -179,6 +179,7 @@ static NSString *k_cellId = @"CycleBannerCell";
 {
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.autoScrollTimeInterval target:self selector:@selector(automaticScroll) userInfo:nil repeats:YES];
     _timer = timer;
+    //设定runloop mode
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 

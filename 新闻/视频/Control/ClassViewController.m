@@ -336,6 +336,7 @@
             if (CGRectGetWidth(self.mpc.view.bounds) == 200) {
                 return;
             }
+            self.btnDownload.hidden = YES;
             [self setupSmallmpc];
         } else {
             //检测到视图已经发生位置变换，则拒绝更新
@@ -343,6 +344,7 @@
                 return;
             }
             self.smallmpc = NO;
+            self.btnDownload.hidden = NO;
             VideoDataFrame *videoframe = self.videoArray[self.currtRow];
 //            self.mpc.view.transform = CGAffineTransformIdentity;
             self.mpc.view.frame = CGRectMake(0, videoframe.cellH*self.currtRow+videoframe.coverF.origin.y, SCREEN_WIDTH, videoframe.coverF.size.height);

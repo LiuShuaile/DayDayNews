@@ -218,9 +218,34 @@
     return rowHeight;
 }
 
-
-
-
+/*
+ {
+ boardid = "ent2_bbs";
+ digest = "\U7f51\U6613\U5a31\U4e505\U670825\U65e5\U62a5\U9053\U8fd1\U65e5\Uff0c\U5218\U607a\U5a01\U8c6a\U82b16000\U4e07\U8fde\U626b\U4e24\U8c6a\U5b85,\U610f\U5916\U66dd\U5149\U5c0f\U7cef\U7c73\U771f\U540d\U3002\U5218\U607a\U5a01\U548c\U6768\U5e42\U5411\U6765\U5404\U6709\U5404\U5fd9\Uff0c\U592b\U59bb\U4fe9\U5df2\U7ecf\U5f88\U4e45\U6ca1\U540c\U6846\U8fc7\U4e86\U3002\U8fd1\U671f\Uff0c\U6e2f\U5a92\U66dd\U5218\U607a\U5a01\U4f4e\U8c03\U5e26\U7740\U7236";
+ docid = CL9MBD4Q00038FO9;
+ imgextra =     (
+ {
+ imgsrc = "http://cms-bucket.nosdn.127.net/3ff795e90be2449b9432b054f1cbe88e20170525134031.png";
+ },
+ {
+ imgsrc = "http://cms-bucket.nosdn.127.net/26c54c74a0d5443998f295686b5a122520170525134031.png";
+ }
+ );
+ imgsrc = "http://cms-bucket.nosdn.127.net/a920f6300b054b65bea11c4d08af68b120170525134031.png";
+ lmodify = "2017-05-25 14:51:19";
+ ltitle = "\U6709\U94b1\Uff01\U5218\U607a\U5a01\U82b16000\U4e07\U4e70\U8c6a\U5b85 \U5973\U513f\U771f\U540d\U610f\U5916\U66dd\U5149";
+ postid = CL9MBD4Q00038FO9;
+ priority = 101;
+ ptime = "2017-05-25 13:41:11";
+ replyCount = 1654;
+ source = "\U7f51\U6613\U5a31\U4e50";
+ subtitle = "";
+ title = "\U6709\U94b1\Uff01\U5218\U607a\U5a01\U82b16000\U4e07\U4e70\U8c6a\U5b85 \U5973\U513f\U771f\U540d\U610f\U5916\U66dd\U5149";
+ url = "http://3g.163.com/ent/17/0525/13/CL9MBD4Q00038FO9.html";
+ "url_3w" = "http://ent.163.com/17/0525/13/CL9MBD4Q00038FO9.html";
+ votecount = 1481;
+ },
+ */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -240,7 +265,7 @@
         NSString *url1 = [data.photosetID substringFromIndex:4];
         url1 = [url1 substringToIndex:4];
         NSString *url2 = [data.photosetID substringFromIndex:9];
-        DLog(@"%@,%@",url1,url2);
+//        DLog(@"%@,%@",url1,url2);
         
         url2 = [NSString stringWithFormat:@"http://c.3g.163.com/photo/api/set/%@/%@.json",url1,url2];
         TopViewController *topVC = [[TopViewController alloc]init];
@@ -311,12 +336,13 @@
         for (DataModel *data in arrayM) {
             [statusArray addObject:data];
         }
-        
-        if (type == 1) {
-            block_self.totalArray = statusArray;
-        }else{
-            [block_self.totalArray addObjectsFromArray:statusArray];
-        }
+        block_self.totalArray = statusArray;
+
+//        if (type == 1) {
+//            block_self.totalArray = statusArray;
+//        }else{
+//            [block_self.totalArray addObjectsFromArray:statusArray];
+//        }
         [block_self.tableview reloadData];
         block_self.page += 20;
         
