@@ -8,9 +8,11 @@
 
 #import "DownloadTableViewController.h"
 #import "AVDownloadManager.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface DownloadTableViewController ()
 @property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) MPMoviePlayerController *mpc;
 @end
 
 @implementation DownloadTableViewController

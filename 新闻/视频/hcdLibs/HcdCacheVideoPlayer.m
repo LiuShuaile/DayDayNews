@@ -718,16 +718,6 @@ typedef enum : NSUInteger {
         make.height.mas_equalTo(33);
     }];
     
-//    self.toolView.frame = CGRectMake(0, CGRectGetHeight(_showView.frame) - 44, CGRectGetWidth(_showView.frame), 44);
-//    [self.toolView removeFromSuperview];
-//    [_showView addSubview:self.toolView];
-//    [self.toolView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(0);
-//        make.bottom.equalTo(weakSelf.showView);
-//        make.right.mas_equalTo(0);
-//        make.height.mas_equalTo(44);
-//    }];
-    
     self.stopButton.frame = CGRectMake(0, 0, 44, 44);
     [self.stopButton removeFromSuperview];
     [self.toolView addSubview:self.stopButton];

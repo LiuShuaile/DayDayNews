@@ -36,7 +36,7 @@
     [self.view addSubview:btn];
     
     UIView *lineV = [[UIView alloc]initWithFrame:CGRectMake(0, 63, SCREEN_WIDTH, 1)];
-    lineV.backgroundColor = [UIColor lightGrayColor];
+    lineV.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
     [self.view addSubview:lineV];
     
     //收藏
@@ -75,11 +75,13 @@
 {
     NSString *url = [NSString stringWithFormat:@"http://c.m.163.com/nc/article/%@/full.html",self.dataModel.docid];
     self.url = url;
-    IMP_BLOCK_SELF(DetailWebViewController);
+//    IMP_BLOCK_SELF(DetailWebViewController);
+    @weakify_self;
     [[BaseEngine shareEngine] runRequestWithPara:nil path:url success:^(id responseObject) {
+        @strongify_self;
         
-        block_self.detailModel = [DetailWebModel detailWithDict:responseObject[block_self.dataModel.docid]];
-        [block_self showInWebView];
+        self.detailModel = [DetailWebModel detailWithDict:responseObject[self.dataModel.docid]];
+        [self showInWebView];
         
     } failure:^(id error) {
         

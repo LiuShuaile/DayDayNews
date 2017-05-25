@@ -43,7 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+//    self.title = @"下载列表";
     //监听夜间模式的改变
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleThemeChanged) name:Notice_Theme_Changed object:nil];
     //点击tabbar刷新tableview
