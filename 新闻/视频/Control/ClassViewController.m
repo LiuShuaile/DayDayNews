@@ -16,6 +16,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "GYHCircleLoadingView.h"
+#import <Masonry/Masonry.h>
 
 @interface ClassViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic , strong) NSMutableArray *videoArray;
@@ -33,9 +34,22 @@
 @property (nonatomic , assign) BOOL smallmpc;
 @property (nonatomic , strong) GYHCircleLoadingView *circleLoadingV;
 
+@property (nonatomic, strong) UIButton *btnDownload;
+
 @end
 
 @implementation ClassViewController
+
+- (UIButton *)btnDownload {
+    if (!_btnDownload) {
+        _btnDownload = [UIButton buttonWithType:1];
+        [_btnDownload setTitle:@"下载" forState:0];
+        [_btnDownload setTitleColor:[UIColor whiteColor] forState:0];
+        _btnDownload.titleLabel.font = [UIFont systemFontOfSize:13];
+        [_btnDownload addTarget:self action:@selector(clickDownload) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnDownload;
+}
 
 -(NSMutableArray *)videoArray
 {
@@ -145,7 +159,18 @@
     self.currtRow = (int)indexPath.row;
     // 创建播放器对象
     self.mpc = [[MPMoviePlayerController alloc] init];
-    self.mpc.contentURL = [NSURL URLWithString:videodata.mp4_url];
+    
+    //检查本地播放地址
+    NSString *palyPath = [[AVCacheManager sharedInstance] isExistLocalFile:videodata.mp4_url];
+    NSURL *playURL = [NSURL URLWithString:palyPath];
+    if (![palyPath hasPrefix:@"http"]) {
+        playURL = [NSURL fileURLWithPath:palyPath];
+        //
+        [self clickDownload];
+    }
+    
+    NSLog(@"%@",playURL);
+    self.mpc.contentURL = playURL;
     // 添加播放器界面到控制器的view上面
     self.mpc.view.frame = CGRectMake(0, videoframe.cellH*indexPath.row+videoframe.coverF.origin.y, SCREEN_WIDTH, videoframe.coverF.size.height);
     //设置加载指示器
@@ -154,7 +179,15 @@
     [self.tableview addSubview:self.mpc.view];
     
     // 隐藏自动自带的控制面板
-    self.mpc.controlStyle = 1;
+    self.mpc.controlStyle = 0;
+    
+    [self.mpc.view addSubview:self.btnDownload];
+    [self.btnDownload mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.width.mas_equalTo(33);
+        make.height.mas_equalTo(33);
+    }];
     
     // 监听播放器
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinish) name:MPMoviePlayerPlaybackDidFinishNotification object:self.mpc];
@@ -162,6 +195,14 @@
     
     [self.mpc play];
     
+}
+
+#pragma mark- methods
+- (void)clickDownload {
+    VideoDataFrame *videoframe = self.videoArray[self.currtRow];
+    VideoData *videodata = videoframe.videodata;
+    [AVDownloadManager sharedInstance].videodata = videodata;
+    [[AVDownloadManager sharedInstance] download:videodata.mp4_url progress:nil state:nil];
 }
 
 #pragma mark - 设置加载指示器
@@ -287,33 +328,27 @@
         //scrollview在屏幕上显示的尺寸高度
         CGFloat scrollviewShowHeight = scrollviewOffSetY + CGRectGetMaxY(scrollView.frame);
         //player最低点
-        //        CGFloat playerMinY = CGRectGetMinY(self.player.frame);
         CGFloat playerMinY = CGRectGetMinY(self.curCellRect);
         //player最高点
-        //        CGFloat playerMaxY = CGRectGetMaxY(self.player.frame);
         CGFloat playerMaxY = CGRectGetMaxY(self.curCellRect);
-        //        NSLog(@"%f:%f:%f:%f",playerMinY,scrollviewShowHeight,scrollviewOffSetY+64,playerMaxY);
         if ((scrollviewOffSetY+64 > playerMaxY)||(scrollviewShowHeight < playerMinY)) {
+            //检测到视图已经发生位置变换，则拒绝更新
             if (CGRectGetWidth(self.mpc.view.bounds) == 200) {
                 return;
             }
             [self setupSmallmpc];
         } else {
+            //检测到视图已经发生位置变换，则拒绝更新
             if (CGRectGetWidth(self.mpc.view.bounds) == SCREEN_WIDTH) {
                 return;
             }
+            self.smallmpc = NO;
             VideoDataFrame *videoframe = self.videoArray[self.currtRow];
-            self.mpc.view.transform = CGAffineTransformIdentity;
+//            self.mpc.view.transform = CGAffineTransformIdentity;
             self.mpc.view.frame = CGRectMake(0, videoframe.cellH*self.currtRow+videoframe.coverF.origin.y, SCREEN_WIDTH, videoframe.coverF.size.height);
             [self.tableview addSubview:self.mpc.view];
         }
-        
-//        if (fabs(scrollView.contentOffset.y)+64 > CGRectGetMaxY(self.mpc.view.frame)) {
-//
-//            [self setupSmallmpc];
-//        }else{
-//            
-//        }
+
     }
 }
 

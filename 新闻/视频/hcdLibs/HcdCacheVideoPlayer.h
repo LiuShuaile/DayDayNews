@@ -52,6 +52,8 @@ typedef NS_ENUM(NSInteger, HCDPlayerState) {
 
 @property (nonatomic, strong) VideoData *videodata;
 
+@property (nonatomic, weak  ) UIView         *showView;
+
 + (instancetype)sharedInstance;
 
 /**

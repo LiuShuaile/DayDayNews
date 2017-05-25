@@ -87,7 +87,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL           isLocalVideo;            //是否播放本地文件
 @property (nonatomic, assign) BOOL           isFinishLoad;            //是否下载完毕
 
-@property (nonatomic, weak  ) UIView         *showView;
+//@property (nonatomic, weak  ) UIView         *showView;
 @property (nonatomic, assign) CGRect         showViewRect;            //视频展示ViewRect
 @property (nonatomic, strong) HcdPlayerView  *playerLayerView;
 @property (nonatomic, strong) UIView         *touchView;              //事件响应View

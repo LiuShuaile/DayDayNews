@@ -34,6 +34,9 @@
 
 @property (nonatomic)          CGFloat                      currentOriginY;
 
+@property (nonatomic, strong) NSIndexPath* curIndexPath;
+@property (nonatomic, assign) BOOL smallmpc;
+
 @end
 
 @implementation VideoViewController
@@ -53,10 +56,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    if (self.player) {
-//        [self.player removePlayer];
-//        self.player = nil;
-//    }
     if (self.playerII) {
         [self.playerII releasePlayer];
         self.playerII = nil;
@@ -129,28 +128,10 @@
 
     VideoDataFrame *videoframe = self.videoArray[indexPath.row];
     VideoData *videodata = videoframe.videodata;
+//    self.currtRow = (int)indexPath.row;
+    self.curIndexPath = indexPath;
     
     //创建播放器
-//    if (self.player) {
-//        [self.player removePlayer];
-//        self.player = nil;
-//    }
-//    CGFloat originY = videoframe.cellH*indexPath.row+videoframe.coverF.origin.y+SCREEN_WIDTH * 0.25;
-//    self.currentOriginY = originY;
-//    CGRect rect = CGRectMake(0, originY, SCREEN_WIDTH, SCREEN_WIDTH * 0.56);
-//
-//    self.player = [[GYPlayer alloc] initWithFrame:rect];
-//    self.player.mp4_url = videodata.mp4_url;
-//    self.player.title = videodata.title;
-//    self.player.currentOriginY = originY;
-//    [self.tableview addSubview:self.player];
-//    @weakify_self;
-//    self.player.currentRowBlock = ^{
-//        @strongify_self;
-//        //当前block用于保证，横屏切换回竖屏后，播放器视图依然保持在self.tableview视图上
-//        [self.tableview addSubview:self.player];
-//    };
-    
     if (self.playerII) {
         [self.playerII releasePlayer];
         self.playerII = nil;
@@ -181,18 +162,27 @@
         //scrollview在屏幕上显示的尺寸高度
         CGFloat scrollviewShowHeight = scrollviewOffSetY + CGRectGetMaxY(scrollView.frame) - 49;
         //player最低点
-//        CGFloat playerMinY = CGRectGetMinY(self.player.frame);
         CGFloat playerMinY = CGRectGetMinY(self.playerII.cellRect);
         //player最高点
-//        CGFloat playerMaxY = CGRectGetMaxY(self.player.frame);
         CGFloat playerMaxY = CGRectGetMaxY(self.playerII.cellRect);
-//        NSLog(@"%f:%f:%f:%f",playerMinY,scrollviewShowHeight,scrollviewOffSetY+64,playerMaxY);
         if ((scrollviewOffSetY+64 > playerMaxY)||(scrollviewShowHeight < playerMinY)) {
-//            [self.player removePlayer];
-//            self.player = nil;
-            
             [self.playerII releasePlayer];
             self.playerII = nil;
+//            if (CGRectGetWidth(self.playerII.showView.bounds) == 200) {
+//                return;
+//            }
+//            self.smallmpc = YES;
+//            self.playerII.showView.frame = CGRectMake(SCREEN_WIDTH-20-200, SCREEN_HEIGHT - 120, 200, 200*0.56);
+//            [self.view addSubview:self.playerII.showView];
+        } else {
+//            if (CGRectGetWidth(self.playerII.showView.bounds) == SCREEN_WIDTH) {
+//                return;
+//            }
+//            self.smallmpc = NO;
+//            VideoCell *cell = [self.tableview cellForRowAtIndexPath:self.curIndexPath];
+//            VideoDataFrame *videoframe = self.videoArray[self.curIndexPath.row];
+//            self.playerII.showView.frame = videoframe.coverF;
+//            [cell.contentView addSubview:self.playerII.showView];
         }
     }
 }
@@ -213,10 +203,6 @@
 }
 
 - (void)dealloc {
-//    if (self.player) {
-//        [self.player removePlayer];
-//        self.player = nil;
-//    }
     if (self.playerII) {
         [self.playerII releasePlayer];
         self.playerII = nil;
@@ -227,7 +213,7 @@
 - (void)initNetWork
 {
     IMP_BLOCK_SELF(VideoViewController);
-//    self.count = 10;
+    self.count = 10;
     NSString *getstr = [NSString stringWithFormat:@"http://c.m.163.com/nc/video/home/%d-10.html",self.count];
     
     [[BaseEngine shareEngine] runRequestWithPara:nil path:getstr success:^(id responseObject) {
