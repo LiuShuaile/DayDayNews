@@ -19,7 +19,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "GYHCircleLoadingView.h"
 #import "CategoryView.h"
-#import "GYPlayer.h"
+//#import "GYPlayer.h"
 #import "HcdCacheVideoPlayer.h"
 
 @interface VideoViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -28,7 +28,7 @@
 @property (nonatomic , assign)int                           count;
 @property (nonatomic , strong) TabbarButton *               btn;
 
-@property (nonatomic , strong) GYPlayer     *               player;
+//@property (nonatomic , strong) GYPlayer     *               player;
 @property (nonatomic, strong) HcdCacheVideoPlayer *playerII;
 @property (nonatomic , assign) int                          currtRow;
 
@@ -53,10 +53,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (self.player) {
-        [self.player removePlayer];
-        self.player = nil;
-    }
+//    if (self.player) {
+//        [self.player removePlayer];
+//        self.player = nil;
+//    }
     if (self.playerII) {
         [self.playerII releasePlayer];
         self.playerII = nil;
@@ -157,6 +157,7 @@
     }
     self.playerII = [[HcdCacheVideoPlayer alloc] init];
     self.playerII.cellRect = cell.frame;
+    self.playerII.videodata = videodata;
     [self.playerII playWithVideoUrl:videodata.mp4_url
                            showView:[[UIView alloc] initWithFrame:videoframe.coverF]
                        andSuperView:cell.contentView];
@@ -171,7 +172,7 @@
 //判断滚动事件，如何超出播放界面，停止播放
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (self.player || self.playerII) {
+    if (self.playerII) {
         /*
          向上👆向下👇滑动，当播放器视图消失，则清理播放器
          */
@@ -187,8 +188,8 @@
         CGFloat playerMaxY = CGRectGetMaxY(self.playerII.cellRect);
 //        NSLog(@"%f:%f:%f:%f",playerMinY,scrollviewShowHeight,scrollviewOffSetY+64,playerMaxY);
         if ((scrollviewOffSetY+64 > playerMaxY)||(scrollviewShowHeight < playerMinY)) {
-            [self.player removePlayer];
-            self.player = nil;
+//            [self.player removePlayer];
+//            self.player = nil;
             
             [self.playerII releasePlayer];
             self.playerII = nil;
@@ -212,10 +213,10 @@
 }
 
 - (void)dealloc {
-    if (self.player) {
-        [self.player removePlayer];
-        self.player = nil;
-    }
+//    if (self.player) {
+//        [self.player removePlayer];
+//        self.player = nil;
+//    }
     if (self.playerII) {
         [self.playerII releasePlayer];
         self.playerII = nil;

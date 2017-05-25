@@ -868,6 +868,7 @@ typedef enum : NSUInteger {
 
 - (void)clickDownload {
     NSLog(@"\n%@",_mp4_url);
+    [AVDownloadManager sharedInstance].videodata = self.videodata;
     [[AVDownloadManager sharedInstance] download:self.mp4_url progress:nil state:nil];
 }
 

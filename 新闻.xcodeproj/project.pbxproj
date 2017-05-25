@@ -124,23 +124,18 @@
 		5ADD1E481ED57D35007733D6 /* AVSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD1E441ED57D35007733D6 /* AVSessionModel.m */; };
 		5ADD1E491ED57D35007733D6 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD1E461ED57D35007733D6 /* NSString+Hash.m */; };
 		5ADD1E591ED5C0A1007733D6 /* DownloadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD1E581ED5C0A1007733D6 /* DownloadTableViewController.m */; };
-		5AE0AE7F1ECD937500A523E0 /* AVloaderURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AE7B1ECD937500A523E0 /* AVloaderURLConnection.m */; };
-		5AE0AE801ECD937500A523E0 /* AVVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AE7D1ECD937500A523E0 /* AVVideoRequestTask.m */; };
-		5AE0AE8E1ECE88E900A523E0 /* AVPlayerCaching.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AE8D1ECE88E900A523E0 /* AVPlayerCaching.m */; };
-		5AE0AE911ECEB37100A523E0 /* AVCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AE901ECEB37100A523E0 /* AVCacheManager.m */; };
-		5AE0AE941ED0544100A523E0 /* AVMediaCacheModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AE931ED0544100A523E0 /* AVMediaCacheModel.m */; };
 		5AE0AED81ED2EA9F00A523E0 /* HcdAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AECD1ED2EA9F00A523E0 /* HcdAudioPlayer.m */; };
 		5AE0AED91ED2EA9F00A523E0 /* hcdCachePlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5AE0AECE1ED2EA9F00A523E0 /* hcdCachePlayer.bundle */; };
 		5AE0AEDA1ED2EA9F00A523E0 /* HcdCacheVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AED11ED2EA9F00A523E0 /* HcdCacheVideoPlayer.m */; };
 		5AE0AEDB1ED2EA9F00A523E0 /* HcdLoaderURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AED31ED2EA9F00A523E0 /* HcdLoaderURLConnection.m */; };
 		5AE0AEDC1ED2EA9F00A523E0 /* HcdTimeSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AED51ED2EA9F00A523E0 /* HcdTimeSheetView.m */; };
 		5AE0AEDD1ED2EA9F00A523E0 /* HcdVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0AED71ED2EA9F00A523E0 /* HcdVideoRequestTask.m */; };
+		5AE47D511ED6892200AF49B1 /* AVCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE47D501ED6892200AF49B1 /* AVCacheManager.m */; };
 		5AF394BF1EC75C8700EABF41 /* GYHHeadeRefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF394BE1EC75C8700EABF41 /* GYHHeadeRefreshController.m */; };
 		5AF394C21EC75CD000EABF41 /* MBProgressHUD+Extion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF394C11EC75CD000EABF41 /* MBProgressHUD+Extion.m */; };
 		669EEF53F610A7BA130F6220 /* libPods-新闻.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280843616FF8E5DD92EE04F /* libPods-新闻.a */; };
 		990DFE601E05294000879725 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 990DFE5F1E05294000879725 /* Foundation+Log.m */; };
 		990DFE631E053D0300879725 /* CategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 990DFE621E053D0300879725 /* CategoryView.m */; };
-		9911BE2D1E07D7050086570C /* GYPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9911BE2C1E07D7050086570C /* GYPlayer.m */; };
 		9921EC871D82AF79009D422E /* StartManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9921EC861D82AF79009D422E /* StartManager.m */; };
 		9921EC8A1D82B4CA009D422E /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9921EC891D82B4CA009D422E /* AppConfig.m */; };
 		9922B9631D802AE400E3E236 /* GYHTimeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9922B95A1D802AE400E3E236 /* GYHTimeTool.m */; };
@@ -415,16 +410,6 @@
 		5ADD1E461ED57D35007733D6 /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		5ADD1E571ED5C0A1007733D6 /* DownloadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTableViewController.h; sourceTree = "<group>"; };
 		5ADD1E581ED5C0A1007733D6 /* DownloadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTableViewController.m; sourceTree = "<group>"; };
-		5AE0AE7A1ECD937500A523E0 /* AVloaderURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVloaderURLConnection.h; sourceTree = "<group>"; };
-		5AE0AE7B1ECD937500A523E0 /* AVloaderURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVloaderURLConnection.m; sourceTree = "<group>"; };
-		5AE0AE7C1ECD937500A523E0 /* AVVideoRequestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVVideoRequestTask.h; sourceTree = "<group>"; };
-		5AE0AE7D1ECD937500A523E0 /* AVVideoRequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVVideoRequestTask.m; sourceTree = "<group>"; };
-		5AE0AE8C1ECE88E900A523E0 /* AVPlayerCaching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerCaching.h; sourceTree = "<group>"; };
-		5AE0AE8D1ECE88E900A523E0 /* AVPlayerCaching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerCaching.m; sourceTree = "<group>"; };
-		5AE0AE8F1ECEB37100A523E0 /* AVCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCacheManager.h; sourceTree = "<group>"; };
-		5AE0AE901ECEB37100A523E0 /* AVCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCacheManager.m; sourceTree = "<group>"; };
-		5AE0AE921ED0544100A523E0 /* AVMediaCacheModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVMediaCacheModel.h; sourceTree = "<group>"; };
-		5AE0AE931ED0544100A523E0 /* AVMediaCacheModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVMediaCacheModel.m; sourceTree = "<group>"; };
 		5AE0AECC1ED2EA9F00A523E0 /* HcdAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HcdAudioPlayer.h; sourceTree = "<group>"; };
 		5AE0AECD1ED2EA9F00A523E0 /* HcdAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HcdAudioPlayer.m; sourceTree = "<group>"; };
 		5AE0AECE1ED2EA9F00A523E0 /* hcdCachePlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = hcdCachePlayer.bundle; sourceTree = "<group>"; };
@@ -437,6 +422,8 @@
 		5AE0AED51ED2EA9F00A523E0 /* HcdTimeSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HcdTimeSheetView.m; sourceTree = "<group>"; };
 		5AE0AED61ED2EA9F00A523E0 /* HcdVideoRequestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HcdVideoRequestTask.h; sourceTree = "<group>"; };
 		5AE0AED71ED2EA9F00A523E0 /* HcdVideoRequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HcdVideoRequestTask.m; sourceTree = "<group>"; };
+		5AE47D4F1ED6892200AF49B1 /* AVCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCacheManager.h; sourceTree = "<group>"; };
+		5AE47D501ED6892200AF49B1 /* AVCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCacheManager.m; sourceTree = "<group>"; };
 		5AF394BD1EC75C8700EABF41 /* GYHHeadeRefreshController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYHHeadeRefreshController.h; sourceTree = "<group>"; };
 		5AF394BE1EC75C8700EABF41 /* GYHHeadeRefreshController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYHHeadeRefreshController.m; sourceTree = "<group>"; };
 		5AF394C01EC75CD000EABF41 /* MBProgressHUD+Extion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Extion.h"; sourceTree = "<group>"; };
@@ -444,8 +431,6 @@
 		990DFE5F1E05294000879725 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		990DFE611E053D0300879725 /* CategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryView.h; sourceTree = "<group>"; };
 		990DFE621E053D0300879725 /* CategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryView.m; sourceTree = "<group>"; };
-		9911BE2B1E07D7050086570C /* GYPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYPlayer.h; sourceTree = "<group>"; };
-		9911BE2C1E07D7050086570C /* GYPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYPlayer.m; sourceTree = "<group>"; };
 		9921EC851D82AF79009D422E /* StartManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartManager.h; sourceTree = "<group>"; };
 		9921EC861D82AF79009D422E /* StartManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartManager.m; sourceTree = "<group>"; };
 		9921EC881D82B4CA009D422E /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
@@ -934,7 +919,6 @@
 			children = (
 				5ADD1E401ED57D35007733D6 /* downloadLibs */,
 				5AE0AECB1ED2EA6100A523E0 /* hcdLibs */,
-				5AE0AE6B1ECD3F3500A523E0 /* libs */,
 				198E408E1D71B0EE00ABDD5E /* GYHPhotoLoadingView */,
 				19C33DED1BB109A20059238A /* Control */,
 				19C33DF01BB109A20059238A /* Model */,
@@ -968,8 +952,6 @@
 		19C33DF11BB109A20059238A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9911BE2B1E07D7050086570C /* GYPlayer.h */,
-				9911BE2C1E07D7050086570C /* GYPlayer.m */,
 				990DFE611E053D0300879725 /* CategoryView.h */,
 				990DFE621E053D0300879725 /* CategoryView.m */,
 				9922B9911D803A9800E3E236 /* HeaderView.h */,
@@ -1165,6 +1147,8 @@
 		5ADD1E401ED57D35007733D6 /* downloadLibs */ = {
 			isa = PBXGroup;
 			children = (
+				5AE47D4F1ED6892200AF49B1 /* AVCacheManager.h */,
+				5AE47D501ED6892200AF49B1 /* AVCacheManager.m */,
 				5ADD1E571ED5C0A1007733D6 /* DownloadTableViewController.h */,
 				5ADD1E581ED5C0A1007733D6 /* DownloadTableViewController.m */,
 				5ADD1E411ED57D35007733D6 /* AVDownloadManager.h */,
@@ -1175,23 +1159,6 @@
 				5ADD1E461ED57D35007733D6 /* NSString+Hash.m */,
 			);
 			path = downloadLibs;
-			sourceTree = "<group>";
-		};
-		5AE0AE6B1ECD3F3500A523E0 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				5AE0AE8F1ECEB37100A523E0 /* AVCacheManager.h */,
-				5AE0AE901ECEB37100A523E0 /* AVCacheManager.m */,
-				5AE0AE7A1ECD937500A523E0 /* AVloaderURLConnection.h */,
-				5AE0AE7B1ECD937500A523E0 /* AVloaderURLConnection.m */,
-				5AE0AE7C1ECD937500A523E0 /* AVVideoRequestTask.h */,
-				5AE0AE7D1ECD937500A523E0 /* AVVideoRequestTask.m */,
-				5AE0AE8C1ECE88E900A523E0 /* AVPlayerCaching.h */,
-				5AE0AE8D1ECE88E900A523E0 /* AVPlayerCaching.m */,
-				5AE0AE921ED0544100A523E0 /* AVMediaCacheModel.h */,
-				5AE0AE931ED0544100A523E0 /* AVMediaCacheModel.m */,
-			);
-			path = libs;
 			sourceTree = "<group>";
 		};
 		5AE0AECB1ED2EA6100A523E0 /* hcdLibs */ = {
@@ -1482,7 +1449,6 @@
 				19918FBF1CDDE12900A89620 /* MessageCell.m in Sources */,
 				198AF7B21C841C9400D941F4 /* SettingItem.m in Sources */,
 				198AF7B31C841C9400D941F4 /* SettingLabelItem.m in Sources */,
-				9911BE2D1E07D7050086570C /* GYPlayer.m in Sources */,
 				190450D51BCCAC0A00C47A50 /* NewDataFrame.m in Sources */,
 				19918FC01CDDE12900A89620 /* MessageImageCell.m in Sources */,
 				190450D71BCCAC0A00C47A50 /* NSString+Extension.m in Sources */,
@@ -1499,7 +1465,6 @@
 				5ADD1E491ED57D35007733D6 /* NSString+Hash.m in Sources */,
 				19ED1DA71C8729D700AD6E0A /* BigImageCell.m in Sources */,
 				9922B9641D802AE400E3E236 /* NSDate+gyh.m in Sources */,
-				5AE0AE911ECEB37100A523E0 /* AVCacheManager.m in Sources */,
 				19BE4F111CE4E64C005E515D /* PhotoCollectTableViewCell.m in Sources */,
 				990DFE601E05294000879725 /* Foundation+Log.m in Sources */,
 				19747D391C87F65600C4CBBD /* DetailWebViewController.m in Sources */,
@@ -1531,7 +1496,6 @@
 				19C33E401BB109A20059238A /* TabbarView.m in Sources */,
 				19ED1DA11C8729BE00AD6E0A /* NewsCell.m in Sources */,
 				9922B9811D80328100E3E236 /* ThemeManager.m in Sources */,
-				5AE0AE8E1ECE88E900A523E0 /* AVPlayerCaching.m in Sources */,
 				19918FBE1CDDE12900A89620 /* AddViewButton.m in Sources */,
 				9921EC8A1D82B4CA009D422E /* AppConfig.m in Sources */,
 				19C33E441BB109FB0059238A /* PhotoCell.m in Sources */,
@@ -1546,15 +1510,13 @@
 				190450E71BCCAE6400C47A50 /* WeatherData.m in Sources */,
 				19C33E3E1BB109A20059238A /* NavigationController.m in Sources */,
 				99C9A31E1D81834900063D23 /* BaseViewController.m in Sources */,
-				5AE0AE941ED0544100A523E0 /* AVMediaCacheModel.m in Sources */,
+				5AE47D511ED6892200AF49B1 /* AVCacheManager.m in Sources */,
 				19881F751D7140E7000EC3E3 /* PullDownCell.m in Sources */,
-				5AE0AE801ECD937500A523E0 /* AVVideoRequestTask.m in Sources */,
 				99EB82871D81155600A85C86 /* LoginView.m in Sources */,
 				19970A711BCF95B800F4CC0C /* LocaHeaderView.m in Sources */,
 				1945F08F1BAFDD0200A38747 /* main.m in Sources */,
 				19E2159A1BD8BC7F000BA38C /* OtherNewsViewController.m in Sources */,
 				19234A471CCE62A300123348 /* CollectTableViewCell.m in Sources */,
-				5AE0AE7F1ECD937500A523E0 /* AVloaderURLConnection.m in Sources */,
 				198E40971D71B0EE00ABDD5E /* GYHSectorProgressView.m in Sources */,
 				9947B2F51DD5A5BD009F81BB /* UIView+GestureRecongnizer.m in Sources */,
 				19918FC11CDDE12900A89620 /* MessageVideoCell.m in Sources */,

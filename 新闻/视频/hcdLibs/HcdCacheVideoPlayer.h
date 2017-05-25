@@ -17,7 +17,7 @@
 //  Created by polesapp-hcd on 16/7/4.
 //  Copyright © 2016年 Polesapp. All rights reserved.
 //
-
+#import "VideoData.h"
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
@@ -49,6 +49,8 @@ typedef NS_ENUM(NSInteger, HCDPlayerState) {
 @property (nonatomic, copy    ) void(^playNextBlock)();                 //播放下一个block
 
 @property (nonatomic, assign) CGRect cellRect;
+
+@property (nonatomic, strong) VideoData *videodata;
 
 + (instancetype)sharedInstance;
 

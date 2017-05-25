@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AVSessionModel.h"
-
+#import "VideoData.h"
 // 缓存主目录
 //#define HSCachesDirectory [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"HSCache"]
 #define kDiskCacheDirectory [AVCacheManager sharedInstance].diskCachePath
@@ -28,6 +28,7 @@
  */
 + (instancetype)sharedInstance;
 
+@property (nonatomic, strong) VideoData *videodata;
 /**
  *  开启任务下载资源
  *
@@ -75,5 +76,6 @@
  *  清空所有下载资源
  */
 //- (void)deleteAllFile;
+
 
 @end

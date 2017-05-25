@@ -140,7 +140,7 @@ static AVDownloadManager *_downloadManager;
     sessionModel.progressBlock = progressBlock;
     sessionModel.stateBlock = stateBlock;
     sessionModel.stream = stream;
-    sessionModel.title = url;
+    sessionModel.title = self.videodata.title;
     [self.sessionModels setValue:sessionModel forKey:@(task.taskIdentifier).stringValue];
     
     [self start:url];

@@ -23,6 +23,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.title = @"下载列表";
     
     NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath];
     if (plistDict) {
@@ -50,7 +51,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:1 reuseIdentifier:@"cellID"];
+        cell = [[UITableViewCell alloc] initWithStyle:3 reuseIdentifier:@"cellID"];
     }
     // Configure the cell...
     NSDictionary *item = self.data[indexPath.row];
