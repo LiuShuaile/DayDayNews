@@ -23,10 +23,12 @@
 @property (nonatomic , assign)int count;
 
 @property (nonatomic, strong) MPMoviePlayerController *mpc;
-@property (nonatomic, strong) MPMoviePlayerController *hpmpc;
+//@property (nonatomic, strong) MPMoviePlayerController *hpmpc;
 @property (nonatomic , strong) UIView *cbfxView;
 @property (nonatomic , strong) UIView *controlView;
 @property (nonatomic , assign) int currtRow;
+
+@property (nonatomic, assign) CGRect curCellRect;
 
 @property (nonatomic , assign) BOOL smallmpc;
 @property (nonatomic , strong) GYHCircleLoadingView *circleLoadingV;
@@ -131,6 +133,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    VideoCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    self.curCellRect = cell.frame;
+    
     VideoDataFrame *videoframe = self.videoArray[indexPath.row];
     VideoData *videodata = videoframe.videodata;
 
@@ -277,12 +282,38 @@
 {
     if (self.mpc) {
 
-        if (fabs(scrollView.contentOffset.y)+64 > CGRectGetMaxY(self.mpc.view.frame)) {
-
+        //scrollview偏移量 由于navigattionBar的存在，scrollview默认初始化偏移量-64
+        CGFloat scrollviewOffSetY = scrollView.contentOffset.y;
+        //scrollview在屏幕上显示的尺寸高度
+        CGFloat scrollviewShowHeight = scrollviewOffSetY + CGRectGetMaxY(scrollView.frame);
+        //player最低点
+        //        CGFloat playerMinY = CGRectGetMinY(self.player.frame);
+        CGFloat playerMinY = CGRectGetMinY(self.curCellRect);
+        //player最高点
+        //        CGFloat playerMaxY = CGRectGetMaxY(self.player.frame);
+        CGFloat playerMaxY = CGRectGetMaxY(self.curCellRect);
+        //        NSLog(@"%f:%f:%f:%f",playerMinY,scrollviewShowHeight,scrollviewOffSetY+64,playerMaxY);
+        if ((scrollviewOffSetY+64 > playerMaxY)||(scrollviewShowHeight < playerMinY)) {
+            if (CGRectGetWidth(self.mpc.view.bounds) == 200) {
+                return;
+            }
             [self setupSmallmpc];
-        }else{
-
+        } else {
+            if (CGRectGetWidth(self.mpc.view.bounds) == SCREEN_WIDTH) {
+                return;
+            }
+            VideoDataFrame *videoframe = self.videoArray[self.currtRow];
+            self.mpc.view.transform = CGAffineTransformIdentity;
+            self.mpc.view.frame = CGRectMake(0, videoframe.cellH*self.currtRow+videoframe.coverF.origin.y, SCREEN_WIDTH, videoframe.coverF.size.height);
+            [self.tableview addSubview:self.mpc.view];
         }
+        
+//        if (fabs(scrollView.contentOffset.y)+64 > CGRectGetMaxY(self.mpc.view.frame)) {
+//
+//            [self setupSmallmpc];
+//        }else{
+//            
+//        }
     }
 }
 
