@@ -167,10 +167,17 @@
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
         
-        NSURLCache *cache =[NSURLCache sharedURLCache];
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:src]];
-        NSData *imgData = [cache cachedResponseForRequest:request].data;
-        UIImage *image = [UIImage imageWithData:imgData];
+        
+        //1、
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL  URLWithString:src]];
+        UIImage *image = [UIImage imageWithData:data]; // 取得图片
+        
+        //2、
+//        NSURLCache *cache =[NSURLCache sharedURLCache];
+//        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:src]];
+//        NSData *imgData = [cache cachedResponseForRequest:request].data;
+//        UIImage *image = [UIImage imageWithData:imgData];
+        
         UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }]];
     [self presentViewController:alert animated:YES completion:nil];

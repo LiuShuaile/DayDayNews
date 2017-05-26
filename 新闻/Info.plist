@@ -95,6 +95,8 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>请点击”允许“获取天气数据</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>请点击”允许“获取相册数据</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HelveticaNeue-BoldOutline.otf</string>
