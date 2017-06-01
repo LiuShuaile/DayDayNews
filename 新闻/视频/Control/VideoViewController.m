@@ -50,8 +50,10 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(mynotification) name:self.title object:nil];
     self.view.backgroundColor = RGBA(239, 239, 244, 1);
     
+    ThemeManager *defaultManager = [ThemeManager sharedInstance];
+    [self.navigationController.navigationBar setBackgroundImage:[defaultManager themedImageWithName:@"navigationBar"] forBarMetrics:UIBarMetricsDefault];
+
     [self initUI];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

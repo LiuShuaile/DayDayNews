@@ -8,7 +8,7 @@ target '新闻' do
 
   # Pods for 新闻
 pod 'AFNetworking'      ,'~> 3.1.0'
-pod 'SDWebImage',       '~> 3.7.2'
+pod 'SDWebImage',       '~> 3.8.1'
 pod 'Masonry'           ,'~> 1.0.2'
 pod 'pop',              '~> 1.0.9'
 pod 'SSKeychain',       '~>1.4.1'
